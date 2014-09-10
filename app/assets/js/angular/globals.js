@@ -16,7 +16,7 @@ var directives = angular.module('app.directives', []);
 
 app.constant('Globals', {
 	                     version:'1.0.0',
-	                     rootUrl:'http://localhost/angular/',
+	                     rootUrl:'http://localhost/estructure-angular-app/public/',
 	                     apiUrl:function(service){
 	                     	return this.generateUrl(service,'api');
 	                     },

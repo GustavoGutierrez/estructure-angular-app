@@ -1,11 +1,12 @@
 /* Filters */
 filters.filter('isNum', function() {
     return function(input) {
-    	console.log(input);
         if(angular.isNumber(input)){
+    	console.log('is number'+input);
         	return input;
         }else{
-        	return null;
+        	console.log('not is number '+input);
+        	return '';
         }
     }
 });

@@ -6,8 +6,9 @@ module.exports = function(grunt){
   		options : {
   			compress : true,
         sourceMap:true,
-  			report : true,
-  			banner : '/* <%= pkg.name %> v<%= pkg.version %> created <%= grunt.template.today("yyyy-mm-dd") %> \n Created <%= pkg.autor %>\n*/',
+  			report : 'min',
+        preserveComments:false,
+  			banner : '/* <%= pkg.name %> v<%= pkg.version %> created <%= grunt.template.today("yyyy-mm-dd") %> \n Created <%= pkg.author %>\n*/',
   		},
   		app : {
   			files : {
@@ -15,10 +16,9 @@ module.exports = function(grunt){
                   "app/assets/js/angular/globals.js",
                   "app/assets/js/angular/routes.js",
                   "app/assets/js/angular/filters.js",
-                  "app/assets/js/angular/directives/directives/Photo.js",
-                  "app/assets/js/angular/services/Student.js",
-                  "app/assets/js/angular/controlles/MainController.js",
-                  "app/assets/js/angular/controlles/StudentController.js"
+                  "app/assets/js/angular/services/**.js",
+                  "app/assets/js/angular/directives/**.js",
+                  "app/assets/js/angular/controllers/**.js",
                ]
   			}
   		}
@@ -28,7 +28,7 @@ module.exports = function(grunt){
       options : {
         report : true,
         stripBanners: true,
-        banner : '/* <%= pkg.name %> v<%= pkg.version %> created <%= grunt.template.today("yyyy-mm-dd") %> \n Created <%= pkg.autor %>\n*/'
+        banner : '/* Vendor for <%= pkg.name %> v<%= pkg.version %> created <%= grunt.template.today("yyyy-mm-dd") %> \n Created for <%= pkg.author %>\n*/'
       },
       angular: {
             src: ["public/js/vendor/angular.min.js",
@@ -43,7 +43,7 @@ module.exports = function(grunt){
         options : {
           compress : true,
           report:'min', //'min', 'gzip'
-          banner : '/* Css <%= pkg.name %> v<%= pkg.version %> created <%=  grunt.template.today("yyyy-mm-dd") %>\n Created <%= pkg.name %>\n */'
+          banner : '/* Css <%= pkg.name %> v<%= pkg.version %> created <%=  grunt.template.today("yyyy-mm-dd") %>\n Created <%= pkg.author %>\n */'
         },
         files : {
             "public/css/styles.min.css": "app/assets/less/styles.less",
@@ -51,6 +51,14 @@ module.exports = function(grunt){
             "public/css/theme/blue.min.css": "app/assets/less/themes/blue.less"
           }
       }
+    },
+
+    watch: {
+      all: {
+        options: { livereload: true },
+        files: ['public/js/angular/**.js'],
+        tasks: ['uglify'],
+      },
     }
 
   });
@@ -58,6 +66,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  //grunt.loadNpmTasks('grunt-contrib-livereload');
  
   grunt.registerTask('default', ['uglify', 'less', 'concat']);
 }

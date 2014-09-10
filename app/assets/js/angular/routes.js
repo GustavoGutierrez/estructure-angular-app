@@ -1,5 +1,5 @@
 /* Routes */
-window.history.star({pushState:true});
+//window.history.star({pushState:true});
 
 app.config(['$routeProvider',
 function($route){ 

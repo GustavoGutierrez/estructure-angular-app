@@ -1,11 +1,11 @@
 /** Service student **/
-services.factory('Student',
+services.factory('Student',['$resource', 'Globals',
  	function($resource, Globals){
-      var urlApi = Globals.apiUrl('student/:action/:param');
+      var urlApi = Globals.apiUrl('student/:id/:action');
       return $resource(urlApi,
                        {
       	                action:'@action',
-                        param:'@param'
+                        id:'@id'
                        },
       	               {
       	               	test:{
@@ -15,4 +15,4 @@ services.factory('Student',
                            }
       	                }
       	               });
-    });
+    }]);

@@ -1,0 +1,5 @@
+{
+  "version": "0.0.1",
+  "appPath": "app/assets/js/angular",
+  "testPath":"app/assets/js/angular/test"
+}

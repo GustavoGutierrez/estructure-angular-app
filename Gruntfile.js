@@ -14,12 +14,12 @@ module.exports = function(grunt){
   		app : {
   			files : {
                "public/js/app.min.js": [
-                  "app/assets/js/angular/globals.js",
-                  "app/assets/js/angular/routes.js",
-                  "app/assets/js/angular/filters.js",
-                  "app/assets/js/angular/services/**.js",
-                  "app/assets/js/angular/directives/**.js",
-                  "app/assets/js/angular/controllers/**.js",
+                  "app/assets/js/angular/scripts/globals.js",
+                  "app/assets/js/angular/scripts/routes.js",
+                  "app/assets/js/angular/scripts/filters.js",
+                  "app/assets/js/angular/scripts/services/**.js",
+                  "app/assets/js/angular/scripts/directives/**.js",
+                  "app/assets/js/angular/scripts/controllers/**.js",
                ]
   			}
   		}
@@ -27,7 +27,7 @@ module.exports = function(grunt){
 
     ngtemplates:{
       app:{
-        cwd:      'app/assets/js/angular/templates',
+        cwd:      'app/assets/js/angular/views',
         src:      '**.html',
         dest:     'public/js/templates.js',
         options:    {
@@ -67,8 +67,8 @@ module.exports = function(grunt){
 
     watch: {
       js: {
-        files: ['app/assets/js/angular/**/*.js',
-                'app/assets/js/angular/*.js'],
+        files: ['app/assets/js/angular/scripts/**/*.js',
+                'app/assets/js/angular/scripts/*.js'],
         tasks: ['uglify:app'],
         options: {
           livereload: true,
@@ -82,7 +82,7 @@ module.exports = function(grunt){
         }
       },
       template:{
-        files: ['app/assets/js/angular/templates/*.html'],
+        files: ['app/assets/js/angular/views/*.html'],
         tasks: ['ngtemplates:app'],
         options: {
           livereload: true,

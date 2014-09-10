@@ -1,18 +1,18 @@
 'use strict';
 /* Config and Globals */
-var app = angular.module('app', [
+var app = angular.module('App', [
   'ngRoute',
   'ngResource',
-  'app.filters',
-  'app.services',
-  'app.directives',
-  'app.controllers'
+  'App.filters',
+  'App.services',
+  'App.directives',
+  'App.controllers'
 ]);
 
-var services = angular.module('app.services', ['ngResource']);
-var controllers = angular.module('app.controllers', []);
-var filters = angular.module('app.filters', []);
-var directives = angular.module('app.directives', []);
+var services = angular.module('App.services', ['ngResource']);
+var controllers = angular.module('App.controllers', []);
+var filters = angular.module('App.filters', []);
+var directives = angular.module('App.directives', []);
 
 app.constant('Globals', {
 	                     version:'1.0.0',

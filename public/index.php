@@ -5,7 +5,7 @@
 	<title>Angular en acción</title>
 
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-
+   <link href="css/styles.min.css" rel="stylesheet">
 </head>
 <body ng-controller="MainController">
 <div class="container">
@@ -14,7 +14,7 @@
        <div data-product-title="" price="25400" name="Papa Rellena"></div>
       <input type="text" value="{{ num | isNum }}" ng-model="num">
       <p>{{ num }}</p>
-      <photo photo-src="{{ photo.url }}" capstring="Tomada el : {{ photo.date }}"></photo>
+      <photo photo-src="{{ photo.url }}" capstring="{{ photo.date }}"></photo>
      </div>
    </div>
    

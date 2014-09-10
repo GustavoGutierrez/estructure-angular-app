@@ -1,11 +1,8 @@
 module.exports = function(grunt){ 
 
-  var bootstrapper = function(module, script, options) {
-    return options.angular+".module('"+module+"'"+(options.standalone ? ', []' : '')+").run(['$templateCache', function($templateCache) {\n"+script+"\n}]);\n";
-  };
-  
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    
   	uglify : {
   		options : {
   			compress : true,
@@ -69,11 +66,28 @@ module.exports = function(grunt){
     },
 
     watch: {
-      all: {
-        options: { livereload: true },
-        files: ['public/js/angular/**.js'],
-        tasks: ['uglify'],
+      js: {
+        files: ['app/assets/js/angular/**/*.js',
+                'app/assets/js/angular/*.js'],
+        tasks: ['uglify:app'],
+        options: {
+          livereload: true,
+        }
       },
+      css: {
+        files: ['app/assets/less/*.less'],
+        tasks: ['less:production'],
+        options: {
+          livereload: true,
+        }
+      },
+      template:{
+        files: ['app/assets/js/angular/templates/*.html'],
+        tasks: ['ngtemplates:app'],
+        options: {
+          livereload: true,
+        }
+      }
     }
 
   });
@@ -82,7 +96,7 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-angular-templates');
-  grunt.loadNpmTasks('grunt-contrib-livereload');
+  grunt.loadNpmTasks('grunt-contrib-watch');
  
-  grunt.registerTask('default', ['uglify', 'less', 'concat','ngtemplates']);
+  grunt.registerTask('default', ['uglify', 'less', 'concat','ngtemplates','watch']);
 }

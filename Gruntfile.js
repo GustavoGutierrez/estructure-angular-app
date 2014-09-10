@@ -1,4 +1,8 @@
 module.exports = function(grunt){ 
+
+  var bootstrapper = function(module, script, options) {
+    return options.angular+".module('"+module+"'"+(options.standalone ? ', []' : '')+").run(['$templateCache', function($templateCache) {\n"+script+"\n}]);\n";
+  };
   
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -23,6 +27,17 @@ module.exports = function(grunt){
   			}
   		}
   	},
+
+    ngtemplates:{
+      app:{
+        cwd:      'app/assets/js/angular/templates',
+        src:      '**.html',
+        dest:     'public/js/templates.js',
+        options:    {
+          htmlmin:  { collapseWhitespace: true, collapseBooleanAttributes: true }
+        }
+      }
+    },
 
     concat : {
       options : {
@@ -66,7 +81,8 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  //grunt.loadNpmTasks('grunt-contrib-livereload');
+  grunt.loadNpmTasks('grunt-angular-templates');
+  grunt.loadNpmTasks('grunt-contrib-livereload');
  
-  grunt.registerTask('default', ['uglify', 'less', 'concat']);
+  grunt.registerTask('default', ['uglify', 'less', 'concat','ngtemplates']);
 }

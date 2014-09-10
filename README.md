@@ -17,7 +17,7 @@ Esto ejecuta grunt y notifica paso a paso sus tareas con detalle
    No confundir con ***> grunt -V***
    esto mustra la versión de grunt instalada en node.
 
-###Contributing To Laravel
+###Contributing
 
 All issues and pull requests should be filed on the GustavoGutierrez/estructure-angular-app repository.
 

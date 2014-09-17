@@ -7,7 +7,7 @@ module.exports = function(grunt){
   		options : {
   			compress : true,
         sourceMap:true,
-  			report : 'min',
+  			report : 'gzip',
         preserveComments:false,
   			banner : '/* <%= pkg.name %> v<%= pkg.version %> created <%= grunt.template.today("yyyy-mm-dd") %> \n Created <%= pkg.author %>\n*/',
   		},
@@ -28,10 +28,11 @@ module.exports = function(grunt){
     ngtemplates:{
       app:{
         cwd:      'app/assets/js/angular/views',
-        src:      '**.html',
+        src:      ['**.html','**/*.html'],
         dest:     'public/js/templates.js',
         options:    {
-          htmlmin:  { collapseWhitespace: true, collapseBooleanAttributes: true }
+          htmlmin:  { collapseWhitespace: true, collapseBooleanAttributes: true },
+          url:    function(url) { return url.replace('/', '.'); }
         }
       }
     },
@@ -54,7 +55,7 @@ module.exports = function(grunt){
       production : {
         options : {
           compress : true,
-          report:'min', //'min', 'gzip'
+          report:'gzip', //'min', 'gzip'
           banner : '/* Css <%= pkg.name %> v<%= pkg.version %> created <%=  grunt.template.today("yyyy-mm-dd") %>\n Created <%= pkg.author %>\n */'
         },
         files : {
@@ -82,7 +83,7 @@ module.exports = function(grunt){
         }
       },
       template:{
-        files: ['app/assets/js/angular/views/*.html'],
+        files: ['app/assets/js/angular/views/*.html', 'app/assets/js/angular/views/**/*.html'],
         tasks: ['ngtemplates:app'],
         options: {
           livereload: true,

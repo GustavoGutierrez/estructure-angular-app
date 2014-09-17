@@ -1,6 +1,6 @@
 /** Main Controller **/
-app.controller('MainController',['$scope', 'Globals','Student',
-	function($scope, Globals, Student){
+app.controller('MainController',['$scope','$location', 'Globals',
+	function($scope, $location, Globals){
 	    $scope.num=89;
 	    $scope.name = 'Prueba nombre';
 		$scope.photo = {url:"img/caballos.jpg", date:'02-25-2014'};
@@ -10,9 +10,8 @@ app.controller('MainController',['$scope', 'Globals','Student',
 		 */
 		$scope.initialize = function(){
 			//console.log(Student.get({id:2,action:'edit'}));
-			console.log('controlador Main', Student);
-        }
-       
+			console.log('controlador Main');
+        }      
 	   $scope.initialize();
 	}
 ]);

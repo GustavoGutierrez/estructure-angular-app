@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Angular en acción</title>
 
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+   
    <link href="css/styles.min.css" rel="stylesheet">
 </head>
-<body ng-controller="MainController">
+<body ng-app="app">
 <div class="container">
-   <div class="row">
-     <div class="col-md-12">
-       <div data-product-title="" price="25400" name="Papa Rellena"></div>
-      <input type="text" value="{{ num | isNum }}" ng-model="num">
-      <p>{{ num }}</p>
-      <photo photo-src="{{ photo.url }}" capstring="{{ photo.date }}"></photo>
-     </div>
-   </div>
+<nav class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-9">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+          <ul class="nav navbar-nav">
+             <li><a href="#/">Home</a></li>
+             <li><a href="#/student">Estudiante</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
    
-   <div class="row">
-    <div class="col-md-12">
-      <p>Recuerda que se instala primero:
-         npm install grunt --save-dev<br/>
-         npm install grunt-contrib-uglify --save-dev<br/>
-         npm install grunt-contrib-less --save-dev</p>
-         <p>Se puede usar el siguiente codigo para incluir template</p>
-         <p>Usando Javascript:</p>
-         <pre>
-            $templateCache.get( 'templateId.html')
-         </pre>
-
-      </div>
-   </div>
-
+   <div ng-view></div>
 </div> 
    <!-- script app -->
    <script src="js/vendors.min.js"></script>

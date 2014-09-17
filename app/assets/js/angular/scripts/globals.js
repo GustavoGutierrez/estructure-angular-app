@@ -1,6 +1,6 @@
 'use strict';
 /* Config and Globals */
-var app = angular.module('App', [
+var app = angular.module('app', [
   'ngRoute',
   'ngResource',
   'App.filters',

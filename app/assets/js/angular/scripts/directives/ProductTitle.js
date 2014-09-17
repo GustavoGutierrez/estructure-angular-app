@@ -1,9 +1,13 @@
-/** Photo Directive **/
-directives.directive('productTitle', ['Globals','$templateCache', function(Globals, $templateCache){
-	console.log('esta en la directiva',$templateCache.get('product-title.html'));
+/**
+ * Photo Title Directive
+ * @param  Object Globals Parametros compartidos Globales
+ * @return photoTitleView
+ */
+directives.directive('productTitle', [function(){
 	return {
 		   restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
-		   template: $templateCache.get('product-title.html'),
+		   //template: $templateCache.get('product-title.html'),
+		   templateUrl:'components.product-title.html',
 		   replace: true,
 		   scope:{
 		   	       name:'@name',

@@ -1,8 +1,8 @@
 /** Photo Directive **/
-directives.directive('photo', ['Globals','$templateCache', function(Globals, $templateCache){
+directives.directive('photo', [function(){
 	return {
 		   restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		   template: $templateCache.get('photo.html'),
+		   templateUrl: 'components.photo.html',
 		   replace: true,
 		   scope:{
 		   	       caption:'@capstring',
